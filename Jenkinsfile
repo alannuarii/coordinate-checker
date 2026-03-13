@@ -33,7 +33,8 @@ pipeline {
                     // because Vite requires VITE_ prefixed env vars AT BUILD TIME.
                     def apiKey = sh(script: "grep VITE_GOOGLE_MAPS_API_KEY .env | cut -d '=' -f2 | tr -d '\"'", returnStdout: true).trim()
                     
-                    def dockerImage = docker.build("${IMAGE_NAME}:${IMAGE_TAG}", "--build-arg VITE_GOOGLE_MAPS_API_KEY=${apiKey} .")
+                    // Build the image using shell instead of Jenkins 'docker' plugin var
+                    sh "docker build --build-arg VITE_GOOGLE_MAPS_API_KEY=${apiKey} -t ${IMAGE_NAME}:${IMAGE_TAG} ."
                     
                     // Tag as latest as well
                     sh "docker tag ${IMAGE_NAME}:${IMAGE_TAG} ${IMAGE_NAME}:latest"
