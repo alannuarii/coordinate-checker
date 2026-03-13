@@ -12,6 +12,14 @@ export default defineConfig({
     nitro(),
     VitePWA({
       registerType: 'autoUpdate',
+      injectRegister: 'script',
+      strategies: 'generateSW',
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,json,webmanifest}']
+      },
+      devOptions: {
+        enabled: true
+      },
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
       manifest: {
         name: 'Coordinate Checker',
@@ -19,16 +27,24 @@ export default defineConfig({
         description: 'Real-time GPS Coordinate Checker and Saver PWA',
         theme_color: '#0f172a',
         background_color: '#0f172a',
+        display: 'standalone',
+        orientation: 'portrait',
         icons: [
           {
-            src: 'pwa-192x192.png',
+            src: '/pwa-192x192.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: 'pwa-512x512.png',
+            src: '/pwa-512x512.png',
             sizes: '512x512',
             type: 'image/png'
+          },
+          {
+            src: '/pwa-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'any maskable'
           }
         ]
       }

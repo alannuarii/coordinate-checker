@@ -31,13 +31,13 @@ export const CoordinateDisplay: Component<{
           <div class="grid grid-cols-2 w-full gap-6 text-center mb-2">
             <div class="flex flex-col items-center">
               <span class="text-xs text-slate-400 font-semibold mb-2 tracking-[0.2em] uppercase">Latitude</span>
-              <span class="text-4xl font-light tracking-tight text-slate-100">{props.location.latitude.toFixed(6)}</span>
+              <span class="text-3xl sm:text-4xl font-light tracking-tight text-slate-100">{props.location.latitude.toFixed(5)}</span>
             </div>
             <div class="flex flex-col items-center relative">
               {/* Divider */}
               <div class="absolute -left-3 top-2 bottom-2 w-px bg-slate-700/50"></div>
               <span class="text-xs text-slate-400 font-semibold mb-2 tracking-[0.2em] uppercase">Longitude</span>
-              <span class="text-4xl font-light tracking-tight text-slate-100">{props.location.longitude.toFixed(6)}</span>
+              <span class="text-3xl sm:text-4xl font-light tracking-tight text-slate-100">{props.location.longitude.toFixed(5)}</span>
             </div>
           </div>
           
